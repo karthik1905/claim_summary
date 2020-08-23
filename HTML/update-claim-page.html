@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MediBuddy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/claim-style.css">
+    <script type="text/javascript" src="../JS/vaidation.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">MediBuddy</a>
+        <ul class="navbar-nav navbar-right list-unstyled">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container container-table">
+        <div class="row vertical-center-row">
+            <div class="text-center col-md-4 col-md-offset-4">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="EmployeeId">Employee Id</label>
+                        </td>
+                        <td>
+                            <input type="text" id="EmployeeIdUpdate" style="font-weight: bold;" placeholder="12345" readonly></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="EmployeeName">Employee Name</label>
+                        </td>
+                        <td>
+                            <input type="text" id="EmployeeNameUpdate" style="font-weight: bold;" placeholder="Karthik.D" readonly></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="ClaimNumber">Claim Number</label>
+                        </td>
+                        <td>
+                            <input type="text" id="ClaimNumber" value="451853187" placeholder="xxx-xxx-xxx"></label>
+                            <p class="error" id="ClaimNumberError"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="ClaimType">Claim Type</label>
+                        </td>
+                        <td>
+                            <select name="claimType">
+                                <option value="“Submitted”">Submitted</option>
+                                <option value="“Pending”">Pending</option>
+                                <option value="”Received”">Received</option>
+                                <option value="More Info Required">More Info Required</option>
+                                <option value="“Pending”">Denied</option>
+                                <option value="”Received”">Rejected</option>
+                                <option value="More Info Required">Paid</option>
+                              </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="ClaimPrograms">Claim Program<label>
+                        </td>
+                        <td>
+                            <input type="text" id="ClaimPrograms" placeholder="Accident" />
+                            <p class="error" id="ClaimProgramsError"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="StartDate">Start Date</label>
+                        </td>
+                        <td>
+                            <input type="date" id="StartDate" name="StartDate" />
+                            <p class="error" id="StartDateError"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="End Date">End Date</label>
+                        </td>
+                        <td>
+                            <input type="date" id="EndDate" name="EndDate">
+                            <p class="error" id="EndDateError"></p>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <span>
+                        <button type="button" onclick="cancelUpdate()" class="btn btn-primary">Cancel</button>
+                    </span>
+                    <span>
+                        <button type="button" onclick="updateClaimValidation()" class="btn btn-success">Update</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

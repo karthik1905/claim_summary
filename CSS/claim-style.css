@@ -1,0 +1,62 @@
+.container-table {
+    height: 100%;
+    font-family: sans-serif;
+    width: 100%;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+    display: table;
+}
+    .error {
+        color: red;
+    }
+    .text-center {
+        background-color: lightgray;
+        border: 1px solid #cecece;
+        padding: 2em;
+        /* margin-left: auto;
+        margin-right: auto; */
+        /* width: 55%; */
+    }
+
+    .text-center-view {
+        background-color: lightgray;
+        border: 1px solid #cecece;
+        padding: 2em;
+        margin-left: auto;
+        margin-right: auto; 
+        width: 65%;
+    }
+
+    .vertical-center-row {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    nav {
+        background-color: #f75990;
+    }
+    #EmployeeIdUpdate {
+        font-weight: bold;
+    }
+    .nav-item {
+        padding-right: 6em;
+        padding-top: 1em;
+        ;
+    }
+    a {
+        color: beige;
+    }
+    td {
+        padding: 1em;
+        text-align: left;
+        font-weight: normal;
+    }
+    th{
+        padding-right: 3%;
+        padding-left: 3%;
+        text-align: left;
+        /* font-weight: bold !important; */
+    }

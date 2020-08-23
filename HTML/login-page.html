@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MediBuddy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/claim-style.css">
+    <script type="text/javascript" src="../JS/vaidation.js"></script>
+</head>
+
+<body>
+    <div class="container container-table">
+        <div class="row vertical-center-row">
+            <div class="text-center col-md-4 col-md-offset-4">
+                <div>
+                    <label for="login">Login</label>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="Name">User Name</label></td>
+                        <td>
+                            <input type="text" id="Name" placeholder="UserName">
+                            <p class="error" id="UserNameError"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="Password">Password</label></td>
+                        <td>
+                            <input type="password" id="Password" placeholder="Password">
+                            <p class="error" id="PasswordError"></p>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <button type="button" onClick="passwordvalidation()" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
