@@ -21,15 +21,6 @@ const[updatedUserData,setUpdatedUser]=useState({
     empId: ''
 })
 
-const[tableValues,setTableValues]=useState([{
-    claimNumber: '',
-    claimType: '',
-    claimPrograms: '',
-    startDate: '',
-    endDate: '',
-    empName: '',
-    empId: ''
-}])
 
     const[errors,setErrors]=useState({});
     const[tableData,setTable]=useState({
@@ -46,7 +37,8 @@ const[tableValues,setTableValues]=useState([{
     }
 
     const handleTableData = (e) => {
-        console.log("handleTableData", tableData.table);
+        console.log("handle table data");
+        // console.log("handleTableData", tableData.table, "e ", e.target.value, "claim num ", claimNumber);
         setTable({
             ...tableData,
             table: !tableData
@@ -61,15 +53,19 @@ const[tableValues,setTableValues]=useState([{
        const handleFormSubmit = (e) => {
            console.log("handleform submit");
         e.preventDefault();
-        setErrors(validate(updatedUserData));
-        axios.post("http://localhost:8080/api/products", updatedUserData);
+        // setErrors(validate(updatedUserData));
+        console.log("before",tableData);
+        setTable({
+            table: true
+        })
+        
+        console.log("after" ,tableData);
+        // axios.post("http://localhost:8080/api/products", updatedUserData);
        }
 
-       const getTable = (e) => {
-           console.log("get table func");
-           e.preventDefault();
-           axios.get("http://localhost:8080/api/products",);
-       }
+    //    const getTable = (e) => {
+          
+    //    }
 
     useEffect(() => {
         console.log(">>> useEffect");
@@ -77,14 +73,13 @@ const[tableValues,setTableValues]=useState([{
             ...tableData,
             table: true    
         })
-        getTable();
         if(Object.keys(errors).length===0 ){
             console.log("business logic to persist object into db");
             // handleFormSubmit();
         }  
     },[errors])
 
-  return{errors,tableData,tableValues,getTable,handleFormChange,handleTableData,handleFormSubmit}
+  return{errors,tableData,handleFormChange,handleTableData,handleFormSubmit}
 };
 
 export default useFormValidation;
