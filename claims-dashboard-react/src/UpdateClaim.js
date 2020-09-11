@@ -3,6 +3,9 @@ import "./UpdateClaim.css";
 import useFormValidation from "./useFormValidation";
 import formValidation from "./formUpdationValidation";
 import axios from "axios";
+import {Link } from "react-router-dom";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import EditClaim from "./EditClaim";
 
 const UpdateClaim = () => {
   const {
@@ -36,9 +39,9 @@ const UpdateClaim = () => {
       });
     console.log(tableValues);
   }, []);
-let number; 
+  
   let renderTable = (value, idx) => {
-    number = value.claimNumber;
+    let number = value.claimNumber;
     return (
       <tr>
         <td>{value.claimNumber}</td>
@@ -49,13 +52,14 @@ let number;
         <td>{value.startDate}</td>
         <td>{value.endDate}</td>
         <td>
+        <Link  to={`/add/${value.claimNumber}`}>
           <button
             type="button"
-            className="btn btn-success"
-            onClick={handleTableData}
+            className="btn btn-primary"
           >
             Edit
           </button>
+            </Link>
         </td>
       </tr>
     );
@@ -65,7 +69,7 @@ let number;
     <div>
       <div className="container-fluid">
         <div>
-          {tableData.table ? (
+          {/* {tableData.table ? ( */}
             <div>
               <form>
                 <table className="table table-dark">
@@ -90,8 +94,8 @@ let number;
                 </table>
               </form>
             </div>
-          ) : (
-            <div className="editTable">
+          {/* ) : ( */}
+             {/* <div className="editTable">
               <table>
                 <tbody>
                   <tr>
@@ -99,7 +103,10 @@ let number;
                       <label>Employee Id</label>
                     </td>
                     <td>
-                      <input type="text" id="empId"></input>
+                      <input type="text"  onChange={handleFormChange} id="empId"></input>
+                      <p className="error text-danger" id="empIdError">
+                        {errors.empIdError}
+                      </p>
                     </td>
                   </tr>
                   <tr>
@@ -107,7 +114,10 @@ let number;
                       <label>Employee Name</label>
                     </td>
                     <td>
-                      <input type="text" id="empName"></input>
+                      <input type="text"  onChange={handleFormChange} id="empName"></input>
+                      <p className="error text-danger" id="empNameError">
+                        {errors.empNameError}
+                      </p>
                     </td>
                   </tr>
                   <tr>
@@ -211,7 +221,7 @@ let number;
                 </span>
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

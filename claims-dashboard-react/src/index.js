@@ -5,18 +5,18 @@ import App from "./App";
 import Claims from './Claims';
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import EditClaim from "./EditClaim";
 
 ReactDOM.render(
   <Router>
     <Switch>
       <Route exact path="/" component={App} />
       <Route exact path="/claims" component={Claims} />
-    </Switch>{" "}
+      <Route exact path="/add" component={EditClaim}/>
+      <Route exact path="/add/:id" component={EditClaim}/>
+    </Switch>
   </Router>,
   document.getElementById("App")
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

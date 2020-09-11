@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
-
+import formValidation from "./formUpdationValidation";
+import { isCompositeComponentWithType } from 'react-dom/test-utils';
 
 const useFormValidation = (validate) => {
 
@@ -21,7 +22,6 @@ const[updatedUserData,setUpdatedUser]=useState({
     empId: ''
 })
 
-
     const[errors,setErrors]=useState({});
     const[tableData,setTable]=useState({
         table: true
@@ -30,6 +30,7 @@ const[updatedUserData,setUpdatedUser]=useState({
     const handleFormChange = (e) => {
         console.log("handleformchange", e.target.value);
         const {id,value}=e.target;
+        console.log(id,value);
         setUpdatedUser({
             ...updatedUserData,
             [id]:value
@@ -52,9 +53,11 @@ const[updatedUserData,setUpdatedUser]=useState({
 
        const handleFormSubmit = (e) => {
            console.log("handleform submit");
-        e.preventDefault();
-        // setErrors(validate(updatedUserData));
+        // e.preventDefault();
+        console.log("updateduserdata",updatedUserData);
+        setErrors(formValidation(updatedUserData));
         console.log("before",tableData);
+        if(errors.length === 0)
         setTable({
             table: true
         })
