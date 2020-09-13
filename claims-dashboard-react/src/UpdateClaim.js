@@ -38,7 +38,7 @@ const UpdateClaim = () => {
         setTableValues(claims);
       });
     console.log(tableValues);
-  }, []);
+  },[]);
   
   let renderTable = (value, idx) => {
     let number = value.claimNumber;

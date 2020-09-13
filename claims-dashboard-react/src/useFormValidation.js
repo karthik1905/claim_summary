@@ -82,7 +82,7 @@ const[updatedUserData,setUpdatedUser]=useState({
         }  
     },[errors])
 
-  return{errors,tableData,handleFormChange,handleTableData,handleFormSubmit}
+  return{errors,tableData,updatedUserData,handleFormChange,handleTableData,handleFormSubmit}
 };
 
 export default useFormValidation;
