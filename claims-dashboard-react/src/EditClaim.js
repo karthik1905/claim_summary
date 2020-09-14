@@ -5,6 +5,7 @@ import formValidation from "./formUpdationValidation";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {Link } from "react-router-dom";
 import axios from "axios";
+import Navbar from './Navbar'
 
 const EditClaim = (employeeId, props) => {
   const dispatch = useDispatch();
@@ -25,20 +26,23 @@ const EditClaim = (employeeId, props) => {
       });
   }, []);
   const addClaim = () => {
+    console.log(updatedUserData);
     dispatch({
       type: "EDIT",
       payload: {
-        empId: updatedUserData.empId,
-        empName: updatedUserData.empName,
+        empId: values.empId,
+        empName: values.empName,
         claimNumber: updatedUserData.claimNumber,
         claimType: updatedUserData.claimType,
         claimPrograms: updatedUserData.claimPrograms,
         startDate: updatedUserData.startDate,
-        endDate: updatedUserData.endData,
+        endDate: updatedUserData.endDate
       },
     });
   };
   return (
+    <div>
+      <Navbar />
     <div className="container-fluid">
       <div className="editTable">
         <table>
@@ -68,7 +72,7 @@ const EditClaim = (employeeId, props) => {
                   type="text"
                   id="claimNumber"
                   onChange={handleFormChange}
-                  placeholder={values.claimNumber}
+                  defaultValue={values.claimNumber}
                 />
                 <p className="error text-danger" id="claimNumberError">
                   {errors.claimNumberError}
@@ -81,7 +85,7 @@ const EditClaim = (employeeId, props) => {
               </td>
               <td>
                 <select
-                  value={values.claimType}
+                  defaultValue={values.claimType}
                   onChange={handleFormChange}
                   id="claimType"
                 >
@@ -108,7 +112,7 @@ const EditClaim = (employeeId, props) => {
                   type="text"
                   id="claimPrograms"
                   onChange={handleFormChange}
-                  placeholder={values.claimPrograms}
+                  defaultValue={values.claimPrograms}
                 />
                 <p className="error text-danger" id="claimProgramsError">
                   {errors.claimProgramsError}
@@ -124,7 +128,7 @@ const EditClaim = (employeeId, props) => {
                   type="date"
                   id="startDate"
                   onChange={handleFormChange}
-                  placeholder={values.startDate}
+                  defaultValue={values.startDate}
                 />
                 <p className="error text-danger" id="startDateError">
                   {errors.startDateError}
@@ -139,7 +143,7 @@ const EditClaim = (employeeId, props) => {
                 <input
                   type="date"
                   onChange={handleFormChange}
-                  placeholder={values.endDate}
+                  defaultValue={values.endDate}
                   id="endDate"
                 />
                 <p className="error text-danger" id="endDateError">
@@ -156,6 +160,8 @@ const EditClaim = (employeeId, props) => {
             </button>
           </span>
           <span>
+            
+          <Link to={`/review`}>
             <button
               type="button"
               onClick={(e) => addClaim(e)}
@@ -163,16 +169,11 @@ const EditClaim = (employeeId, props) => {
             >
               Update
             </button>
-          </span>
-          <span>
-            <Link to={`/review`}>
-              <button type="button" className="btn btn-primary">
-                review
-              </button>
             </Link>
           </span>
         </div>
       </div>
+    </div>
     </div>
   );
 };

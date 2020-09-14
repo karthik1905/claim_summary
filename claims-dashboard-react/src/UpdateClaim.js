@@ -44,15 +44,15 @@ const UpdateClaim = () => {
     let number = value.claimNumber;
     return (
       <tr>
+        <td>{value.empId}</td>
         <td>{value.claimNumber}</td>
         <td>{value.empName}</td>
-        <td>{value.empId}</td>
         <td>{value.claimType}</td>
         <td>{value.claimPrograms}</td>
         <td>{value.startDate}</td>
         <td>{value.endDate}</td>
         <td>
-        <Link  to={`/add/${value.claimNumber}`}>
+        <Link  to={`/add/${value.empId}`}>
           <button
             type="button"
             className="btn btn-primary"

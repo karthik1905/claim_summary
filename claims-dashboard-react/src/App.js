@@ -132,6 +132,7 @@ class App extends Component {
                     type="button"
                     onClick={this.loginClick}
                     className="btn btn-primary"
+                    data-testid="button"
                   >
                     Login
                   </button>
@@ -142,6 +143,7 @@ class App extends Component {
                     type="button"
                     onClick={this.loginClick}
                     className="btn btn-primary"
+                    data-testid="Login"
                   >
                     Login
                   </button>

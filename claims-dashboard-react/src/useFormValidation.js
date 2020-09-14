@@ -35,6 +35,15 @@ const[updatedUserData,setUpdatedUser]=useState({
             ...updatedUserData,
             [id]:value
         })
+        setErrors(updatedUserData);
+        if(errors.length === 0)
+            setTable({
+                table: true
+            })
+        else
+            setTable({
+                table: false
+            })
     }
 
     const handleTableData = (e) => {

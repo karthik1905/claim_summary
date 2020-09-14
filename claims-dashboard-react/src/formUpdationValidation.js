@@ -1,4 +1,5 @@
 export default function formValidation(userData){
+    console.log("userdata",userData);
     let claimNum  = "";
     claimNum  = userData.claimNumber;
     let claimPrgm = "";
@@ -9,18 +10,16 @@ export default function formValidation(userData){
     let lettersAlphaNumeric = /^[0-9a-zA-Z-]+$/;
     let dateReg = /^\d{4}([./-])\d{2}\1\d{2}$/
     console.log("formvalidation",userData);
-    if(claimNum.length === 0){
-        errors.claimNumberError = "Cannot be empty";
-    }
-    else if (!claimNum.match(lettersAlphaNumeric)) 
+    if (!claimNum.match(lettersAlphaNumeric)) 
 	{
         errors.claimNumberError =  "No Special Characters allowed";
-	}
-	if (claimPrgm.length === 0) {
-        errors.claimProgramsError = "Cannot be empty";
+	} else if(claimNum.length === 0){
+        errors.claimNumberError = "Cannot be empty";
     }
-    else if (claimPrgm.length > 20) {
+    if (claimPrgm.length > 20) {
         errors.claimProgramsError  = "Please enter maximum of 20 digits";
+    } else if (claimPrgm.length === 0) {
+        errors.claimProgramsError = "Cannot be empty";
     }
     if (!startDate.match(dateReg)) {
         errors.startDateError = "Please enter the valid date";
