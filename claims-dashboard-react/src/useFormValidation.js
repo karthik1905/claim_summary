@@ -28,26 +28,14 @@ const[updatedUserData,setUpdatedUser]=useState({
     });
 
     const handleFormChange = (e) => {
-        console.log("handleformchange", e.target.value);
         const {id,value}=e.target;
-        console.log(id,value);
         setUpdatedUser({
             ...updatedUserData,
             [id]:value
-        })
-        setErrors(updatedUserData);
-        if(errors.length === 0)
-            setTable({
-                table: true
-            })
-        else
-            setTable({
-                table: false
-            })
+        });
     }
 
     const handleTableData = (e) => {
-        console.log("handle table data");
         // console.log("handleTableData", tableData.table, "e ", e.target.value, "claim num ", claimNumber);
         setTable({
             ...tableData,
@@ -72,26 +60,19 @@ const[updatedUserData,setUpdatedUser]=useState({
         })
         
         console.log("after" ,tableData);
-        // axios.post("http://localhost:8080/api/products", updatedUserData);
        }
 
-    //    const getTable = (e) => {
-          
-    //    }
 
     useEffect(() => {
-        console.log(">>> useEffect");
-        setUpdatedUser({
+        setTable({
             ...tableData,
             table: true    
         })
         if(Object.keys(errors).length===0 ){
-            console.log("business logic to persist object into db");
-            // handleFormSubmit();
         }  
     },[errors])
 
-  return{errors,tableData,updatedUserData,handleFormChange,handleTableData,handleFormSubmit}
+  return{errors,tableData,updatedUserData,setUpdatedUser, handleFormChange,handleTableData,handleFormSubmit}
 };
 
 export default useFormValidation;

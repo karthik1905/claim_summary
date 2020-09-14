@@ -14,37 +14,40 @@ class App extends Component {
       password: "",
       errorName: null,
       errorPassword: null,
-      loginFlag: false,
+      loginFlag: true,
+      pageFlag: false
     };
   }
 
   loginClick = () => {
-    console.log("clicked");
-    this.setState({ errorName: null, errorPassword: null, loginFlag: true });
-    let lettersAlphaNumeric = /^[0-9a-zA-Z]+$/;
-    if (this.state.userName === "") {
-      this.setState({
-        errorName: "User Name cannot be empty",
-        loginFlag: true,
-      });
-    }
-    if (this.state.password === "")
+    this.setState({ errorName: null, errorPassword: null, loginFlag: false, pageFlag: false});
+    let lettersAlphaNumeric = /^[0-9a-zA-Z]+$/;    
+    if (this.state.password <= 0)
       this.setState({
         errorPassword: "Password cannot be empty",
         loginFlag: true,
       });
-    if (this.state.password.length < 4) {
+    else if (this.state.password.length < 4) {
       this.setState({
         errorPassword: "Password should be of 4 characters",
         loginFlag: true,
       });
     }
-    if (!this.state.userName.match(lettersAlphaNumeric)) {
+    if (this.state.userName.length <=0) {
+      this.setState({
+        errorName: "User Name cannot be empty",
+        loginFlag: true,
+      });
+    }
+    else if (!this.state.userName.match(lettersAlphaNumeric)) {
       this.setState({
         errorName: "Special characters not allowed",
         loginFlag: true,
       });
     }
+    else if(!this.state.loginFlag)
+      this.setState({pageFlag: true});
+    console.log("loginflag",this.state.loginFlag,"pageflag",this.state.pageFlag);
   };
 
   onChangePassword(event) {
@@ -125,9 +128,8 @@ class App extends Component {
                 </table>
               </form>
               <div className="login">
-                {this.state.loginFlag ? 
                 <div>
-                <Link className="nav-link" to="/claims">
+                <Link className="nav-link" to={this.state.pageFlag ? "/claims" : "/" }>
                   <button
                     type="button"
                     onClick={this.loginClick}
@@ -138,16 +140,6 @@ class App extends Component {
                   </button>
                 </Link>
                 </div>
-                : <div>
-                  <button
-                    type="button"
-                    onClick={this.loginClick}
-                    className="btn btn-primary"
-                    data-testid="Login"
-                  >
-                    Login
-                  </button>
-                  </div>}
               </div>
             </div>
           </div>

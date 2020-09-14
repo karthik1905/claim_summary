@@ -6,8 +6,8 @@ import axios from "axios";
 
 const ReviewClaimCard = () => {
   let claims = useSelector((state) => state.claim);
+  const [tableValues, setTableValues] = useState({});
   console.log("reiew claims", claims);
-  console.log(">>>>>>>>>>>>>>>");
   console.log("empid",claims.empId);
 
   const [values, setClaimsValues] = useState({});
@@ -26,19 +26,20 @@ const ReviewClaimCard = () => {
     let postClaims = {
         empId: claims.empId,
         empName: claims.empName,
-        claimNumber: (claims.claimNumber === undefined ? values.claimNumber : claims.claimNumber),
-        claimType: (claims.claimType === undefined ? values.claimType : claims.claimType),
-        claimPrograms: (claims.claimPrograms === undefined ? values.claimPrograms : claims.claimPrograms),
-        startDate: (claims.startDate === undefined ? values.startDate : claims.startDate),
-        endDate: (claims.endDate === undefined ? values.endDate : claims.endDate)
-    }
-    console.log("postclaims", postClaims);
+        claimNumber:  claims.claimNumber,
+        claimType: claims.claimType,
+        claimPrograms: claims.claimPrograms,
+        startDate: claims.startDate,
+        endDate: claims.endDate
+      }
     axios
-    .post(`http://localhost:8080/api/products` , {postClaims})
+    .post(`http://localhost:8080/api/products` , postClaims)
     .then((response) => {
         console.log("post response ", response)
-    })
+    });
+    
   }
+
   console.log("values1",values);
   console.log("values2",values);
   return (
@@ -72,8 +73,8 @@ const ReviewClaimCard = () => {
                 <input
                   type="text"
                   id="claimNumber"
-                  className= {claims.claimNumber===undefined ? null : "border border-primary" }
-                  defaultValue={claims.claimNumber===undefined ? values.claimNumber : claims.claimNumber }
+                  className= {claims.claimNumber !== values.claimNumber ? "border border-primary" : null }
+                  defaultValue={claims.claimNumber}
                 />
               </td>
             </tr> 
@@ -86,8 +87,8 @@ const ReviewClaimCard = () => {
               <input
                   type="text"
                   id="claimType"
-                  className= {claims.claimType===undefined ? null :"border border-primary" }
-                  defaultValue={claims.claimType===undefined ? values.claimType : claims.claimType}
+                  className= {claims.claimType !== values.claimType ? "border border-primary" : null }
+                  defaultValue={claims.claimType}
                 />
               </td>
             </tr> 
@@ -99,8 +100,8 @@ const ReviewClaimCard = () => {
                 <input
                   type="text"
                   id="claimPrograms"
-                  className= {claims.claimPrograms===undefined ? null : "border border-primary" }
-                  defaultValue={claims.claimPrograms===undefined ? values.claimPrograms : claims.claimPrograms }
+                  className= {claims.claimPrograms !== values.claimPrograms ? "border border-primary" : null}
+                  defaultValue={claims.claimPrograms }
                 />
               </td>
             </tr>
@@ -112,8 +113,8 @@ const ReviewClaimCard = () => {
                 <input
                   type="date"
                   id="startDate"
-                  className= {claims.startDate=== undefined ? null : "border border-primary" }
-                  defaultValue={claims.startDate===undefined ? values.startDate : claims.startDate}
+                  className= {claims.startDate !== values.startDate ? "border border-primary" : null}
+                  defaultValue={claims.startDate}
                 />
               </td>
             </tr>
@@ -124,8 +125,8 @@ const ReviewClaimCard = () => {
               <td>
                 <input
                   type="date"
-                  className= {claims.endDate===undefined ? null : "border border-primary" }
-                  defaultValue={claims.endDate===undefined ? values.endDate : claims.endDate }
+                  className= {claims.endDate !== values.endDate ? "border border-primary" : null }
+                  defaultValue={claims.endDate }
                   id="endDate"
                 />
               </td>
@@ -144,7 +145,7 @@ const ReviewClaimCard = () => {
               </Link>
             </span>
             <span>
-              <Link to={`/review`}>
+              <Link to={'/review'}>
                 <button
                   type="button"
                     onClick={(e) => submitClaim(e)}
