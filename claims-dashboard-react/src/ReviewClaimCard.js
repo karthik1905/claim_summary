@@ -6,7 +6,6 @@ import axios from "axios";
 
 const ReviewClaimCard = () => {
   let claims = useSelector((state) => state.claim);
-  const [tableValues, setTableValues] = useState({});
   console.log("reiew claims", claims);
   console.log("empid",claims.empId);
 
@@ -20,7 +19,7 @@ const ReviewClaimCard = () => {
         setClaimsValues(claim);
       });
       console.log("values",values);
-  }, []);
+  }, [claims.empId, values]);
 
   const submitClaim = (e) => {
     let postClaims = {
@@ -145,7 +144,7 @@ const ReviewClaimCard = () => {
               </Link>
             </span>
             <span>
-              <Link to={'/review'}>
+              <Link to={'/claims'}>
                 <button
                   type="button"
                     onClick={(e) => submitClaim(e)}
