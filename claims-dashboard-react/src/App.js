@@ -19,7 +19,7 @@ class App extends Component {
     };
   }
 
-  loginClick = () => {
+  loginClick () {
     this.setState({ errorName: null, errorPassword: null, loginFlag: false, pageFlag: false});
     let lettersAlphaNumeric = /^[0-9a-zA-Z]+$/;    
     if (this.state.password <= 0)
@@ -48,7 +48,7 @@ class App extends Component {
     else if(!this.state.loginFlag)
       this.setState({pageFlag: true});
     console.log("loginflag",this.state.loginFlag,"pageflag",this.state.pageFlag);
-  };
+  }
 
   onChangePassword(event) {
     this.setState({

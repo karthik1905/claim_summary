@@ -31,7 +31,7 @@ const UpdateClaim = () => {
     console.log(tableValues);
   },[tableValues]);
   
-  let renderTable = (value, idx) => {
+  let renderTable = (value) => {
     return (
       <tr>
         <td>{value.empId}</td>

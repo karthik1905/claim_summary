@@ -57,8 +57,8 @@ const EditClaim = (props) => {
     handleFormSubmit();
     console.log("error addclaim", errors);
     console.log("updated userdata", updatedUserData);
-    setTimeout(function() {}, 3000);
-    updateMessage();
+    if (Object.keys(errors).length === 0)
+      updateMessage();
   };
 
   const reviewClaim = () => {
@@ -215,7 +215,18 @@ const EditClaim = (props) => {
               </Link>
             </span>
 
-            {updateFlag.flag ? (
+            {/* {updateFlag.flag ? ( */}
+              <span>
+                <button
+                  type="button"
+                  onClick={(e) => addClaim(e)}
+                  className="btn btn-primary"
+                >
+                  Update
+                </button>
+              </span>
+            {/* ) : ( */}
+              
               <span>
                 <Link to="/review">
                 <button
@@ -227,19 +238,9 @@ const EditClaim = (props) => {
                 </button>
                 </Link>
               </span>
-            ) : (
-              <span>
-                <button
-                  type="button"
-                  onClick={(e) => addClaim(e)}
-                  className="btn btn-primary"
-                >
-                  Update
-                </button>
-              </span>
-            )}
+            {/* )} */}
           </div>
-          <div>{updateFlag.flag ? <p>Updated Successfully!</p> : null}</div>
+          {/* <div>{updateFlag.flag ? <p>Updated Successfully!</p> : null}</div> */}
         </div>
       </div>
     </div>

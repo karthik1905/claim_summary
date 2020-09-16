@@ -21,7 +21,8 @@ const ReviewClaimCard = () => {
       console.log("values",values);
   }, [claims.empId, values]);
 
-  const submitClaim = (e) => {
+  const submitClaim = () => {
+    // e.preventdefault();
     let postClaims = {
         empId: claims.empId,
         empName: claims.empName,

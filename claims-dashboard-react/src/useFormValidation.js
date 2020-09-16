@@ -1,14 +1,7 @@
 import {useState,useEffect} from 'react';
 import formValidation from "./formUpdationValidation";
 
-const useFormValidation = (validate) => {
-
-// const[userData,setUser]=useState({
-//         userName: '',
-//         password: ''
-// })
-
-// const{} = formValidation(userData)
+const useFormValidation = () => {
 
 const[updatedUserData,setUpdatedUser]=useState({
     claimNumber: '',
@@ -31,24 +24,13 @@ const[updatedUserData,setUpdatedUser]=useState({
             ...updatedUserData,
             [id]:value
         });
-    }
-
-    const handleTableData = (e) => {
-        // console.log("handleTableData", tableData.table, "e ", e.target.value, "claim num ", claimNumber);
         setTable({
             ...tableData,
             table: !tableData
         })
     }
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     setErrors(validate(userData));
-    //    }
-
-       const handleFormSubmit = (e) => {
-           console.log("handleform submit");
-        // e.preventDefault();
+       const handleFormSubmit = () => {
         console.log("updateduserdata",updatedUserData);
         setErrors(formValidation(updatedUserData));
         console.log("before",tableData);
@@ -66,11 +48,9 @@ const[updatedUserData,setUpdatedUser]=useState({
             ...tableData,
             table: true    
         })
-        if(Object.keys(errors).length===0 ){
-        }  
     },[errors])
 
-  return{errors,tableData,updatedUserData,setUpdatedUser, handleFormChange,handleTableData,handleFormSubmit}
+  return{errors,tableData,updatedUserData,setUpdatedUser, handleFormChange,handleFormSubmit}
 };
 
 export default useFormValidation;
